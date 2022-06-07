@@ -19,6 +19,15 @@ form.addEventListener('submit', (e) => {
   });
   // show results an scroll to top window to see the score
   scrollTo(0, 0);
-  results.querySelector('span').textContent = `${score}%`;
   results.classList.remove('d-none');
+  // animation score from 0 to score
+  let output = 0;
+  const timer = setInterval(() => {
+    if (output === score) {
+      clearInterval(timer);
+    } else {
+      output++;
+      results.querySelector('span').textContent = `${output}%`;
+    }
+  }, 10);
 });
